@@ -42,6 +42,7 @@ console.log(it);
 class Frontend extends Department {
     admins;
     recentManager;
+    static instance;
     get mostRecentManager() {
         if (this.recentManager) {
             return this.recentManager;
@@ -59,6 +60,13 @@ class Frontend extends Department {
         this.admins = admins;
         this.recentManager = admins[0];
     }
+    static getInstance() {
+        if (this.instance) {
+            return this.instance;
+        }
+        this.instance = new Frontend('d2', []);
+        return this.instance;
+    }
     addManager(manager) {
         this.managers.push(manager);
     }
@@ -73,7 +81,8 @@ class Frontend extends Department {
         console.log(this.managers);
     }
 }
-const frontend = new Frontend('🔔d2', []);
+const frontend = Frontend.getInstance();
+console.log(frontend);
 frontend.addAdmins('equal to addReport');
 console.log(frontend.mostRecentManager);
 frontend.addManager('elise');
