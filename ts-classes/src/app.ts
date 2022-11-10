@@ -1,20 +1,21 @@
-class Department {
+abstract class Department {
     static fiscalYear:number=2022 //' static is that they are to detach from instance, if we want to use static inside of block, we have to access use classname.property
     // name: string;
     private employees: string[] = [];
     protected managers: string[] = []; //' private makes the property only available in the current scope and cant be interited, but protected make sure it can be inherited.
 
-    constructor(private readonly id: string, public name: string) {
+    constructor(protected readonly id: string, public name: string) {
         // this.name = n; //. shorthand initialization, so we dont have to initialize it again
         //. readonly must be stated in the initialization phase
     }
-    /**
+    /**  
      *  ' first[this] should be class type
      *  ' second [this] will refer to the thing it is calling,⬇️
      */
-    describe(this: Department) {
-        console.log(`department${this.id}: ${this.name}`);
-    }
+    abstract describe(this: Department) :void //' when we cant provide a default implementation in the base class, only the structure of the method, but every inherited class !must! include and specify this method 
+    // {
+    //     console.log(`department${this.id}: ${this.name}`);
+    // }
 
     addEmployee(employee: string) {
         this.employees.push(employee);
@@ -29,13 +30,13 @@ class Department {
     }
 }
 
-const dev = new Department('di', 'Dev');
+// const dev = new Department('di', 'Dev');//# cant create instance of abstract class
 
-console.log(dev);
+// console.log(dev);
 
-dev.describe();
+// dev.describe();
 
-const devCopy = { name: 's', describe: dev.describe }; //'by adding name property it will return 'department s'
+// const devCopy = { name: 's', describe: dev.describe }; //'by adding name property it will return 'department s'
 
 // devCopy.describe(); //' with employees[] added its not working
 /**
@@ -45,10 +46,10 @@ const devCopy = { name: 's', describe: dev.describe }; //'by adding name propert
  * #but it will return undefined, because this keyword refers to devCopy,which has no name property
  */
 
-dev.addEmployee('ana');
-dev.addEmployee('bob');
-// dev.describe()
-dev.printEmployee();
+// dev.addEmployee('ana');
+// dev.addEmployee('bob');
+// // dev.describe()
+// dev.printEmployee();
 
 //>static call
 const employee1 = Department.addEmployee('ana')
@@ -59,6 +60,9 @@ console.log(employee1,Department.fiscalYear);
 class IT extends Department {
     constructor(id: string, public admins: string[]) {
         super(id, 'IT');
+    }
+    describe(){
+        console.log(`IT department:➡️ ${this.id}`);//> has to change id from private to protected in order to access it
     }
 }
 const it = new IT('🔖d1', ['ana']);
@@ -99,6 +103,10 @@ class Frontend extends Department {
         this.managers.push(manager);
     }
 
+    describe() {
+        console.log(`frontend department 😶‍🌫️ ${this.id}`);
+    }//! we must add describe in every extended class
+
     addAdmins(text: string) {
         this.admins.push(text);
         this.recentManager = text;
@@ -114,6 +122,7 @@ frontend.addAdmins('equal to addReport');
 console.log(frontend.mostRecentManager); //. get, if we put this before .addAdmins, we will receive error,it will check for the if there is a manager already.
 frontend.addManager('elise');
 frontend.addManager('🪄bob');
+frontend.describe()
 
 frontend.mostRecentManager = 'bob'; //. trying to set, if we put an empty string we will receive error, becausr of the if check for !value
 frontend.printManager();
