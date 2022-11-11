@@ -56,12 +56,13 @@ class Car {
 }
 
 class Truck {
+    constructor(public amount:number){}
     drive() {
         console.log('driving a truck🚒');
     }
 
-    loadCargo(amount: number) {
-        console.log('loading cargo 📦' + amount);
+    loadCargo(_amount: number) {
+        console.log(`loading cargo 📦 + ${this.amount}`);//@ take away, if we initialize the parameter in te constructor we can use it with this keyword and template literalsin other places, but we have to provide the initial value when create the class.
     }
 }
 
@@ -69,7 +70,7 @@ type Vehicle = Car | Truck;
 
 const v1 = new Car();
 
-const v2 = new Truck();
+const v2 = new Truck(10);
 
 function useVehicle(vehicle: Vehicle) {
     vehicle.drive();
@@ -111,7 +112,8 @@ race({ type: 'bird', flyingSpeed: 50 });
 
 //: type casting
 
-const para = document.querySelector('p') as HTMLInputElement; //.if we use querSelector, we get type: HTMLParagraphElement | null
-const para2 = <HTMLInputElement>document.getElementById('para'); //. if we use getElementById, we get type: HTMLElement | null
-
-para2.value = 'my value';
+const para = document.querySelector('p') as HTMLParagraphElement; //'if we use querSelector, we get type: HTMLParagraphElement | null
+//@ syntex two has property over syntex one with as keyword
+const para2 = <HTMLParagraphElement>document.getElementById('para'); //' if we use getElementById, we get type: HTMLElement | null
+para.textContent = 'my value1';
+para2.textContent = 'my value2';

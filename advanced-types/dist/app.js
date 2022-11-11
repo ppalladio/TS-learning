@@ -26,15 +26,18 @@ class Car {
     }
 }
 class Truck {
+    constructor(amount) {
+        this.amount = amount;
+    }
     drive() {
         console.log('driving a truck🚒');
     }
-    loadCargo(amount) {
-        console.log('loading cargo 📦' + amount);
+    loadCargo(_amount) {
+        console.log(`loading cargo 📦 + ${this.amount}`);
     }
 }
 const v1 = new Car();
-const v2 = new Truck();
+const v2 = new Truck(10);
 function useVehicle(vehicle) {
     vehicle.drive();
     if (vehicle instanceof Truck) {
@@ -58,5 +61,6 @@ function race(animal) {
 race({ type: 'bird', flyingSpeed: 50 });
 const para = document.querySelector('p');
 const para2 = document.getElementById('para');
-para2.value = 'my value';
+para.textContent = 'my value1';
+para2.textContent = 'my value2';
 //# sourceMappingURL=app.js.map
