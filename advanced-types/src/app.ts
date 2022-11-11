@@ -16,12 +16,14 @@ const e1: PromoteEmployee = {
     privileges: ['be a boss'],
     startDate: new Date(),
 };
-
+//@ type guard
+//> type guard 1
 type type1 = number | string;
 type type2 = number | boolean;
 
 type intersect = type1 & type2; //' type intersect: number
 
+//> type guard 2: checking properties
 const add = (a: type1, b: type1) => {
     //'type guard
     if (typeof a === 'string' || typeof b === 'string') {
@@ -45,7 +47,7 @@ function printEmployee(emp: unknownEmployee) {
 
 printEmployee(e1);
 
-//: 'instanceof' type guard
+//> type guard 3: instanceof
 
 class Car {
     drive() {
@@ -79,3 +81,30 @@ function useVehicle(vehicle: Vehicle) {
 
 useVehicle(v1);
 useVehicle(v2);
+
+//:discriminated unions
+interface Bird {
+    type: 'bird'; //' type assignment
+    flyingSpeed: number;
+}
+
+interface Horse {
+    type: 'horse';
+    runningSpeed: number;
+}
+
+type Animal = Bird | Horse;
+
+function race(animal: Animal) {
+    let speed;
+    switch (animal.type) {
+        case 'bird':
+            speed = animal.flyingSpeed;
+            break;
+        case 'horse':
+            speed = animal.runningSpeed;
+            break;
+    }
+    console.log('moving at speed of ' + speed);
+}
+race({ type: 'bird', flyingSpeed: 50 });

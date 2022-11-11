@@ -43,4 +43,17 @@ function useVehicle(vehicle) {
 }
 useVehicle(v1);
 useVehicle(v2);
+function race(animal) {
+    let speed;
+    switch (animal.type) {
+        case 'bird':
+            speed = animal.flyingSpeed;
+            break;
+        case 'horse':
+            speed = animal.runningSpeed;
+            break;
+    }
+    console.log('moving at speed of ' + speed);
+}
+race({ type: 'bird', flyingSpeed: 50 });
 //# sourceMappingURL=app.js.map
