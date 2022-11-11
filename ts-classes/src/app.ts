@@ -1,5 +1,5 @@
 interface Greeting {
-    name: string;
+    readonly name: string;//' readonly property
     age: number;
 
     greet(phrase: string): void; //' only the description of method
