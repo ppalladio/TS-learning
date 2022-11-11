@@ -56,4 +56,7 @@ function race(animal) {
     console.log('moving at speed of ' + speed);
 }
 race({ type: 'bird', flyingSpeed: 50 });
+const para = document.querySelector('p');
+const para2 = document.getElementById('para');
+para2.value = 'my value';
 //# sourceMappingURL=app.js.map

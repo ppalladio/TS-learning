@@ -108,3 +108,10 @@ function race(animal: Animal) {
     console.log('moving at speed of ' + speed);
 }
 race({ type: 'bird', flyingSpeed: 50 });
+
+//: type casting
+
+const para = document.querySelector('p') as HTMLInputElement; //.if we use querSelector, we get type: HTMLParagraphElement | null
+const para2 = <HTMLInputElement>document.getElementById('para'); //. if we use getElementById, we get type: HTMLElement | null
+
+para2.value = 'my value';
