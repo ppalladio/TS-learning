@@ -1,7 +1,10 @@
-interface Greeting {
-    readonly name: string;//' readonly property
-    age: number;
+interface Named {
+    name: string;
+}
 
+interface Greeting extends Named {
+    // readonly name: string;//' readonly property
+    age: number;
     greet(phrase: string): void; //' only the description of method
 }
 
