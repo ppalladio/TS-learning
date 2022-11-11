@@ -41,6 +41,41 @@ function printEmployee(emp: unknownEmployee) {
     if ('startDate' in emp) {
         console.log('startDate: ' + emp.startDate);
     }
-} 
+}
 
-printEmployee(e1)
+printEmployee(e1);
+
+//: 'instanceof' type guard
+
+class Car {
+    drive() {
+        console.log('Driving');
+    }
+}
+
+class Truck {
+    drive() {
+        console.log('driving a truck🚒');
+    }
+
+    loadCargo(amount: number) {
+        console.log('loading cargo 📦' + amount);
+    }
+}
+
+type Vehicle = Car | Truck;
+
+const v1 = new Car();
+
+const v2 = new Truck();
+
+function useVehicle(vehicle: Vehicle) {
+    vehicle.drive();
+    if (vehicle instanceof Truck) {
+        //'instanceof can find out if some object is based on that class. and instanceof is a js class keyword
+        vehicle.loadCargo(100);
+    }
+}
+
+useVehicle(v1);
+useVehicle(v2);
