@@ -4,12 +4,12 @@ const e1 = {
     privileges: ['be a boss'],
     startDate: new Date(),
 };
-const add = (a, b) => {
+function add(a, b) {
     if (typeof a === 'string' || typeof b === 'string') {
         return a.toString() + b.toString();
     }
     return a + b;
-};
+}
 function printEmployee(emp) {
     console.log('name: ' + emp.name);
     if ('privileges' in emp) {
@@ -67,4 +67,6 @@ const error = {
     email: 'must be a valid email address',
     username: 'must be a valid username',
 };
+const result = add(3, 'max');
+result.split(' ');
 //# sourceMappingURL=app.js.map

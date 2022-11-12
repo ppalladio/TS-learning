@@ -24,13 +24,18 @@ type type2 = number | boolean;
 type intersect = type1 & type2; //' type intersect: number
 
 //> type guard 2: checking properties
-const add = (a: type1, b: type1) => {
+function add(a: string, b: string): string; //' function overloads
+function add(a: number, b: number): number;
+function add(a: string, b: number): string;
+function add(a: number, b: string): string;
+
+function add(a: type1, b: type1) {
     //'type guard
     if (typeof a === 'string' || typeof b === 'string') {
         return a.toString() + b.toString();
     }
     return a + b;
-};
+}
 
 type unknownEmployee = Employee | Admin;
 
@@ -129,3 +134,8 @@ const error: ErrorHandling = {
     email: 'must be a valid email address',
     username: 'must be a valid username',
 };
+
+//: function overload
+//> add() function from type guard section
+const result = add(3, 'max');
+result.split(' ');
