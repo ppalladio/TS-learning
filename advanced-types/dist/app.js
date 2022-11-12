@@ -69,4 +69,12 @@ const error = {
 };
 const result = add(3, 'max');
 result.split(' ');
+const fetchUserData = {
+    id: 'u1',
+    name: 'ana',
+    job: { title: 'daydreamer', descrption: 'love sleep' },
+};
+const userInput = null;
+const storedValue = userInput !== null && userInput !== void 0 ? userInput : 'the value is null or undefined';
+console.log(storedValue);
 //# sourceMappingURL=app.js.map

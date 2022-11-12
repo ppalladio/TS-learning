@@ -139,3 +139,22 @@ const error: ErrorHandling = {
 //> add() function from type guard section
 const result = add(3, 'max');
 result.split(' ');
+
+//:optional chaining
+
+const fetchUserData = {
+    id: 'u1',
+    name: 'ana',
+    job: { title: 'daydreamer', descrption: 'love sleep' },
+};
+
+// console.log(fetchUserData?.job?.title);
+// console.log(fetchUserData.job && fetchUserData.job.title); //' JS syntex of checking if the data exists
+
+//: nullish coalescing
+
+const userInput = null;
+
+const storedValue = userInput ?? 'the value is null or undefined'; //' THE second value is the fallback value
+
+console.log(storedValue);
