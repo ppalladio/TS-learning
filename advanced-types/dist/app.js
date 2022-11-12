@@ -63,4 +63,8 @@ const para = document.querySelector('p');
 const para2 = document.getElementById('para');
 para.textContent = 'my value1';
 para2.textContent = 'my value2';
+const error = {
+    email: 'must be a valid email address',
+    username: 'must be a valid username',
+};
 //# sourceMappingURL=app.js.map

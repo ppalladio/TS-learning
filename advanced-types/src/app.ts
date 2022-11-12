@@ -56,13 +56,13 @@ class Car {
 }
 
 class Truck {
-    constructor(public amount:number){}
+    constructor(public amount: number) {}
     drive() {
         console.log('driving a truck🚒');
     }
 
     loadCargo(_amount: number) {
-        console.log(`loading cargo 📦 + ${this.amount}`);//@ take away, if we initialize the parameter in te constructor we can use it with this keyword and template literalsin other places, but we have to provide the initial value when create the class.
+        console.log(`loading cargo 📦 + ${this.amount}`); //@ take away, if we initialize the parameter in te constructor we can use it with this keyword and template literalsin other places, but we have to provide the initial value when create the class.
     }
 }
 
@@ -117,3 +117,15 @@ const para = document.querySelector('p') as HTMLParagraphElement; //'if we use q
 const para2 = <HTMLParagraphElement>document.getElementById('para'); //' if we use getElementById, we get type: HTMLElement | null
 para.textContent = 'my value1';
 para2.textContent = 'my value2';
+
+//:  index property [prop:string]:string
+
+interface ErrorHandling {
+    [prop: string]: string; //' with this, we are restricting the type of the property, without giving it a concrete name, hence we can create as many as we want. Then state the type of the value.
+    //! the property type cant be boolean, and CAN NOT mix with other types.
+}
+
+const error: ErrorHandling = {
+    email: 'must be a valid email address',
+    username: 'must be a valid username',
+};
