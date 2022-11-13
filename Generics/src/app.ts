@@ -1,10 +1,25 @@
-const name1: string[] = ['ana'];
-const name2 = []; //' any[]
-// const names:Array=[]//'Generic type 'Array<T>' requires 1 type argument(s)
-const name3: Array<string> = []; //' === name3:string[]
+function merge<T, U>(objA: T, objB: U) {
+    return Object.assign(objA!, objB);
+}
 
-const promise: Promise<string> = new Promise((res, _rej) => {
-    setTimeout(() => {
-        res('timeout');
-    }, 2000);
+//' with T extends Object returns (objA: T, objB: U): T & U
+//' with Object.assign(objA!, objB) returns (objA: T, objB: U): T & {} & U
+
+const mergeObj = merge({ name: 'ana' }, { age: 10 });
+const mergeObj2 = merge(
+    { name: 'ana', hobbies: ['eat', 'pray', 'sleep'] },
+    { age: 10 },
+);
+
+console.log(mergeObj.name); //. ana
+
+mergeObj2.hobbies.forEach((el) => {
+    console.log(el);
 });
+/**
+ * eat
+ * pray
+ * sleep
+ */
+
+console.log(mergeObj2.hobbies[0]); //. eat
