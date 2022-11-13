@@ -90,3 +90,26 @@ fn2.addItem('a');
 fn2.addItem('b');
 fn2.removeItem('b');
 console.log(fn2.getItem());
+
+//: some other built-in types
+
+//> Partial
+
+interface Person {
+    name: string;
+    occupation: string;
+    birthday: Date;
+}
+let ana: Partial<Person> = {}; //' to have one of your interfaces to be optional, but ONLY temporarily
+
+function fn3(title: string, occupation: string, date: Date): Person {
+    ana.name = title;
+    ana.occupation = occupation;
+    ana.birthday = date;
+    return ana as Person; //' we can use type casting at this point because we know that stage all the properties will be filled not a partial one
+}
+
+//> Readonly
+
+const names:Readonly<string[]> = ['ana','bob']
+// names.push('cece')//'this wont work
