@@ -1,5 +1,6 @@
 //: generic function
-function merge<T, U>(objA: T, objB: U) {
+function merge<T extends object, U extends object>(objA: T, objB: U) {
+    //' here it can extends any object with any structure, but it has to be an object,  extends can be followed by string, custom type, union type
     return Object.assign(objA!, objB);
 }
 
