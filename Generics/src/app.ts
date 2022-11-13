@@ -65,3 +65,28 @@ const Person = {
 const result = fn1(Person, 'dicovoced');
 
 console.log(result);
+
+//: Generic Classes
+
+class DataStorage<T> {
+    private data = [];
+
+    addItem(item: T) {
+        this.data.push(item);
+    }
+
+    removeItem(item: T) {
+        this.data.splice(this.data.indexOf(item), 1);
+    }
+
+    getItem() {
+        return [...this.data];
+    }
+}
+
+const fn2 = new DataStorage<string>();
+
+fn2.addItem('a');
+fn2.addItem('b');
+fn2.removeItem('b');
+console.log(fn2.getItem());
