@@ -1,9 +1,9 @@
 # TS-learning
 all about TypeScript
 
-enable 
- /* Experimental Options */
-       => "experimentalDecorators": true /* Enables experimental support for ES7 decorators. */
+enable <br/>
+ /* Experimental Options */<br/>
+       => "experimentalDecorators": true /* Enables experimental support for ES7 decorators. */<br/>
        
- set
- "target": "es6" 
+ set<br/>
+ "target": "es6" <br/>
