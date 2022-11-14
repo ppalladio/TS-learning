@@ -34,4 +34,31 @@ const Person = {
 };
 const result = fn1(Person, 'dicovoced');
 console.log(result);
+class DataStorage {
+    constructor() {
+        this.data = [];
+    }
+    addItem(item) {
+        this.data.push(item);
+    }
+    removeItem(item) {
+        this.data.splice(this.data.indexOf(item), 1);
+    }
+    getItem() {
+        return [...this.data];
+    }
+}
+const fn2 = new DataStorage();
+fn2.addItem('a');
+fn2.addItem('b');
+fn2.removeItem('b');
+console.log(fn2.getItem());
+let ana = {};
+function fn3(title, occupation, date) {
+    ana.name = title;
+    ana.occupation = occupation;
+    ana.birthday = date;
+    return ana;
+}
+const names = ['ana', 'bob'];
 //# sourceMappingURL=app.js.map

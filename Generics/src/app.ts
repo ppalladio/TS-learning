@@ -69,7 +69,7 @@ console.log(result);
 //: Generic Classes
 
 class DataStorage<T> {
-    private data = [];
+    private data:T[] = [];
 
     addItem(item: T) {
         this.data.push(item);
