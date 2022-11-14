@@ -11,6 +11,16 @@ function Logger(el) {
         console.log(el);
     };
 }
+function Html(el, tag) {
+    return function (constructor) {
+        const tagName = document.getElementById(tag);
+        const person = new constructor();
+        if (tagName) {
+            tagName.innerHTML = el;
+            tagName.querySelector('h1').textContent = person.name;
+        }
+    };
+}
 let Person = class Person {
     constructor() {
         this.name = 'ana';
@@ -18,7 +28,7 @@ let Person = class Person {
     }
 };
 Person = __decorate([
-    Logger('el message🌈')
+    Html('<h1>rendered content</h1>', 'app')
 ], Person);
 const person = new Person();
 console.log(person);
