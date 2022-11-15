@@ -58,7 +58,7 @@ class Product {
         this.title = a;
     }
     @log3
-    getPriceWithTax(@log4tax: number) {
+    getPriceWithTax(@log4 tax: number) {
         return this._price * (1 + tax);
     }
 }
@@ -77,4 +77,11 @@ function log3(target: any, name: string, descriptor: PropertyDescriptor) {
     console.log(target);
     console.log(name);
     console.log(descriptor);
+}
+
+function log4(target: any, name: string, position: number) {
+    console.log('parameter decorator');
+    console.log(target);
+    console.log(name);
+    console.log(position); //: =0 the position of the parameter
 }
