@@ -106,4 +106,30 @@ let People = class People {
 People = __decorate([
     Html2('<h1>chaing a class in class decorator<h2>', 'html2')
 ], People);
+function Bind(_target, _name, descriptor) {
+    const originalMethod = descriptor.value;
+    console.log(descriptor);
+    const adjDescriptor = {
+        get() {
+            const bindFn = originalMethod.bind(this);
+            return bindFn;
+        },
+    };
+    console.log(descriptor);
+    return adjDescriptor;
+}
+class Printer {
+    constructor() {
+        this.msg = 'its working';
+    }
+    showMsg() {
+        console.log(this.msg);
+    }
+}
+__decorate([
+    Bind
+], Printer.prototype, "showMsg", null);
+const p = new Printer();
+const button = document.querySelector('button');
+button.addEventListener('click', p.showMsg);
 //# sourceMappingURL=app.js.map

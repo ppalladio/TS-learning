@@ -100,7 +100,7 @@ function Html2(el: string, tag: string) {
     ) {
         return class extends oldConstructor {
             constructor(..._args: any[]) {
-                super();//'save the original class
+                super(); //'save the original class
                 console.log('rendering new constructor');
                 const tagName = document.getElementById(tag);
                 // const person = new oldConstructor(); //' we can access name useing this
@@ -124,3 +124,30 @@ class People {
 
 // const people = new People();
 // console.log(people); //' if we comment this out, bob wont show up on the screen [INSTANTIATE]
+
+//: other decorator return type: accessor and method.
+
+function Bind(_target: any, _name: string, descriptor: PropertyDescriptor) {
+    const originalMethod = descriptor.value;
+    console.log(descriptor);
+    const adjDescriptor: PropertyDescriptor = {
+        get() {
+            const bindFn = originalMethod.bind(this);
+            return bindFn;
+        },
+    };
+    console.log(descriptor);
+    return adjDescriptor; //' overwrite the original descriptor
+}
+class Printer {
+    msg = 'its working';
+    @Bind
+    showMsg() {
+        console.log(this.msg);
+    }
+}
+
+const p = new Printer();
+
+const button = document.querySelector('button')!;
+button.addEventListener('click', p.showMsg);
