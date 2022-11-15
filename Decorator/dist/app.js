@@ -21,11 +21,11 @@ let Person = class Person {
     }
 };
 Person = __decorate([
-    Html('<h1>rendered content</h1>', 'app')
+    Html1('<h1>rendered content</h1>', 'app')
 ], Person);
 const person = new Person();
 console.log(person);
-function Html(el, tag) {
+function Html1(el, tag) {
     return function (constructor) {
         const tagName = document.getElementById(tag);
         const person = new constructor();
@@ -82,4 +82,28 @@ function log4(target, name, position) {
     console.log(name);
     console.log(position);
 }
+function Html2(el, tag) {
+    return function (oldConstructor) {
+        return class extends oldConstructor {
+            constructor(..._args) {
+                super();
+                console.log('rendering new constructor');
+                const tagName = document.getElementById(tag);
+                if (tagName) {
+                    tagName.innerHTML = el;
+                    tagName.querySelector('h1').textContent = this.name;
+                }
+            }
+        };
+    };
+}
+let People = class People {
+    constructor() {
+        this.name = 'bob';
+        console.log('creating new Person');
+    }
+};
+People = __decorate([
+    Html2('<h1>chaing a class in class decorator<h2>', 'html2')
+], People);
 //# sourceMappingURL=app.js.map

@@ -12,7 +12,7 @@ function Logger(el: string) {
 
 /////@ Logger //'to use decorator, use @decorator before the where we want to use it
 ///// @Logger('el message🌈') //' with decorator factories, we need to call the function and we can add parameters
-@Html('<h1>rendered content</h1>', 'app')
+@Html1('<h1>rendered content</h1>', 'app')
 class Person {
     name = 'ana';
 
@@ -26,7 +26,7 @@ const person = new Person();
 console.log(person);
 
 //: decorator factories
-function Html(el: string, tag: string) {
+function Html1(el: string, tag: string) {
     return function (constructor: any) {
         const tagName = document.getElementById(tag);
         const person = new constructor(); //' convert constructor type to any to access the properties inside
@@ -85,3 +85,42 @@ function log4(target: any, name: string, position: number) {
     console.log(name);
     console.log(position); //: =0 the position of the parameter
 }
+
+//: returing a class in class decorator
+
+function Html2(el: string, tag: string) {
+    //' now html2 will only be render if we instantiate the object but when the decorator is created
+    return function <T extends { new (...args: any[]): { name: string } }>(
+        /**
+         * ' SET to generic type
+         * 'new , a function we can call with new keyword
+         * 'this new method that T is based on will get any amount of arguments, hence the rest parameter. and will return an object.But we dont know if name will exist, which is correct because html2 is added to a class with name property
+         */
+        oldConstructor: T,
+    ) {
+        return class extends oldConstructor {
+            constructor(..._args: any[]) {
+                super();//'save the original class
+                console.log('rendering new constructor');
+                const tagName = document.getElementById(tag);
+                // const person = new oldConstructor(); //' we can access name useing this
+                if (tagName) {
+                    tagName.innerHTML = el;
+                    tagName.querySelector('h1')!.textContent = this.name; //'use ! to assume that h1 alaways exists
+                }
+            }
+        }; //' returning a constructor function that is based on the previous constructor function
+    };
+}
+
+@Html2('<h1>chaing a class in class decorator<h2>', 'html2')
+class People {
+    name = 'bob';
+
+    constructor() {
+        console.log('creating new Person');
+    }
+}
+
+// const people = new People();
+// console.log(people); //' if we comment this out, bob wont show up on the screen [INSTANTIATE]
