@@ -48,6 +48,7 @@ function Log(target: any, propertyName: string) {
 class Product {
     @Log
     title: string;
+    @log2
     set price(value: number) {
         if (value > 0) {
             this._price = value;
@@ -63,3 +64,10 @@ class Product {
 }
 
 //:accessor and parameters decorators
+function log2(target: any, name: string, descriptor: PropertyDescriptor) {
+    //'PropertyDescriptor is a built-in interface
+    console.log('accessor decorator');
+    console.log(target); //' prototype
+    console.log(name); //'name of the setter
+    console.log(descriptor); //'description of the setter
+}

@@ -54,4 +54,13 @@ class Product {
 __decorate([
     Log
 ], Product.prototype, "title", void 0);
+__decorate([
+    log2
+], Product.prototype, "price", null);
+function log2(target, name, descriptor) {
+    console.log('accessor decorator');
+    console.log(target);
+    console.log(name);
+    console.log(descriptor);
+}
 //# sourceMappingURL=app.js.map
