@@ -11,16 +11,6 @@ function Logger(el) {
         console.log(el);
     };
 }
-function Html(el, tag) {
-    return function (constructor) {
-        const tagName = document.getElementById(tag);
-        const person = new constructor();
-        if (tagName) {
-            tagName.innerHTML = el;
-            tagName.querySelector('h1').textContent = person.name;
-        }
-    };
-}
 let Person = class Person {
     constructor() {
         this.name = 'ana';
@@ -32,4 +22,36 @@ Person = __decorate([
 ], Person);
 const person = new Person();
 console.log(person);
+function Html(el, tag) {
+    return function (constructor) {
+        const tagName = document.getElementById(tag);
+        const person = new constructor();
+        if (tagName) {
+            tagName.innerHTML = el;
+            tagName.querySelector('h1').textContent = person.name;
+        }
+    };
+}
+function Log(target, propertyName) {
+    console.log('property decrator');
+    console.log(target);
+    console.log(propertyName);
+}
+class Product {
+    constructor(a, _price) {
+        this._price = _price;
+        this.title = a;
+    }
+    set price(value) {
+        if (value > 0) {
+            this._price = value;
+        }
+    }
+    getPriceWithTax(tax) {
+        return this._price * (1 + tax);
+    }
+}
+__decorate([
+    Log
+], Product.prototype, "title", void 0);
 //# sourceMappingURL=app.js.map
