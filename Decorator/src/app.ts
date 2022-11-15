@@ -57,8 +57,8 @@ class Product {
     constructor(a: string, private _price: number) {
         this.title = a;
     }
-
-    getPriceWithTax(tax: number) {
+    @log3
+    getPriceWithTax(@log4tax: number) {
         return this._price * (1 + tax);
     }
 }
@@ -70,4 +70,11 @@ function log2(target: any, name: string, descriptor: PropertyDescriptor) {
     console.log(target); //' prototype
     console.log(name); //'name of the setter
     console.log(descriptor); //'description of the setter
+}
+
+function log3(target: any, name: string, descriptor: PropertyDescriptor) {
+    console.log('method decorator');
+    console.log(target);
+    console.log(name);
+    console.log(descriptor);
 }

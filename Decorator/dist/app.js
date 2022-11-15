@@ -57,8 +57,17 @@ __decorate([
 __decorate([
     log2
 ], Product.prototype, "price", null);
+__decorate([
+    log3
+], Product.prototype, "getPriceWithTax", null);
 function log2(target, name, descriptor) {
     console.log('accessor decorator');
+    console.log(target);
+    console.log(name);
+    console.log(descriptor);
+}
+function log3(target, name, descriptor) {
+    console.log('method decorator');
     console.log(target);
     console.log(name);
     console.log(descriptor);
