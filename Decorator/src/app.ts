@@ -125,7 +125,7 @@ class People {
 // const people = new People();
 // console.log(people); //' if we comment this out, bob wont show up on the screen [INSTANTIATE]
 
-//: other decorator return type: accessor and method.
+//: other decorator return type: (accessor) and method.
 
 function Bind(_target: any, _name: string, descriptor: PropertyDescriptor) {
     const originalMethod:any = descriptor.value;
@@ -151,3 +151,31 @@ const p = new Printer();
 
 const button = document.querySelector('button')!;
 button.addEventListener('click', p.showMsg);
+
+//:validation with decorator
+
+class Course {
+    title!: string;
+    price!: number;
+
+    constructor(t: string, p: number) {
+        this.title = t;
+        this.price = p;
+    }
+}
+
+const courseForm = document.querySelector('form')!;
+courseForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const titleEl = document.getElementById('title') as HTMLInputElement;
+
+    const priceEl = document.getElementById('price') as HTMLInputElement;
+
+    const title = titleEl.id;
+    const price = +priceEl.id;
+
+    const createdCourse = new Course(title, price);
+    console.log(createdCourse);
+    console.log(titleEl);
+    console.log(title);
+});

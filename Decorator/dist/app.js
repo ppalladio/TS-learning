@@ -132,4 +132,22 @@ __decorate([
 const p = new Printer();
 const button = document.querySelector('button');
 button.addEventListener('click', p.showMsg);
+class Course {
+    constructor(t, p) {
+        this.title = t;
+        this.price = p;
+    }
+}
+const courseForm = document.querySelector('form');
+courseForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const titleEl = document.getElementById('title');
+    const priceEl = document.getElementById('price');
+    const title = titleEl.id;
+    const price = +priceEl.id;
+    const createdCourse = new Course(title, price);
+    console.log(createdCourse);
+    console.log(titleEl);
+    console.log(title);
+});
 //# sourceMappingURL=app.js.map
