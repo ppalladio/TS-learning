@@ -128,7 +128,7 @@ class People {
 //: other decorator return type: accessor and method.
 
 function Bind(_target: any, _name: string, descriptor: PropertyDescriptor) {
-    const originalMethod = descriptor.value;
+    const originalMethod:any = descriptor.value;
     console.log(descriptor);
     const adjDescriptor: PropertyDescriptor = {
         get() {
