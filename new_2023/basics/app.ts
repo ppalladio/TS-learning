@@ -1,35 +1,15 @@
-// const person :{}={
-// 	name:string;
-// 	age:number;
-//	hobbies:string[]; //>string array
-// }
-
-enum Skill {
-    JAVA,
-    C,
-    PYTHON,
-    GO,
-    SQL,
-    OTHER,
+function add(input1: number | string, input2: number | string) {
+    let result;
+    if (input1 === 'number' && input2 === 'number') {
+        result = input1 + input2;
+    } else {
+       result = input1.toString() + input2.toString();
+    }
+    return result;
 }
-const person: {
-    name: string;
-    age: number;
-    hobbies: string[];
-    role: [number, string]; //tuple length cant be changed, but push can add element. type cant be changed.
-    skill: Skill; //>customized type
-} = {
-    name: 'John',
-    age: 20,
-    hobbies: ['coding', 'programming'],
-    role: [1, 'prof'],
-    skill: 0, //here it can be skill:0 or skill: Skill.JAVA, both mean the same thing
-};
 
-// person.role=[] //@not allowed
+console.log(add(1, 2));
 
-console.log(person.name);
+console.log(add('number', 'string'));
 
-if (person.skill === 0) { // it can be the position in the enum or the string JAVA
-    console.log('know java');
-}
+
