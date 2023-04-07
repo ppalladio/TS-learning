@@ -1,3 +1,4 @@
+"use strict";
 // const person :{}={
 // 	name:string;
 // 	age:number;
@@ -12,15 +13,15 @@ var Skill;
     Skill[Skill["SQL"] = 4] = "SQL";
     Skill[Skill["OTHER"] = 5] = "OTHER";
 })(Skill || (Skill = {}));
-var person = {
+const person = {
     name: 'John',
     age: 20,
     hobbies: ['coding', 'programming'],
     role: [1, 'prof'],
-    skill: 0,
+    skill: 0, //here it can be skill:0 or skill: Skill.JAVA, both mean the same thing
 };
 // person.role=[] //@not allowed
 console.log(person.name);
-if (person.skill === 0) {
+if (person.skill === 0) { // it can be the position in the enum or the string JAVA
     console.log('know java');
 }
