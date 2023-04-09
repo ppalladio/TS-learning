@@ -6,7 +6,7 @@ class Department {
         this.employees = [];
     }
     describe() {
-        console.log('Department' + this.name);
+        console.log(this.id + ' Department ' + this.name);
     }
     addEmployee(employee) {
         this.employees.push(employee);
@@ -16,4 +16,6 @@ class Department {
     }
 }
 const IT = new Department("d1", "it");
+IT.describe();
 // IT.employees[2] = "ana" //@cant be access because its private
+//IT.name ="accounting" Cannot assign to 'name' because it is a read-only property
