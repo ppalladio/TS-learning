@@ -1,9 +1,9 @@
 class Department {
-    name: string;
+
     private employees: string[] = [];
 
-    constructor(n: string) {
-        this.name = n;
+    constructor(private id: string,public name: string) {
+
     }
     describe(this: Department) {
         console.log('Department' + this.name);
@@ -16,5 +16,5 @@ class Department {
     }
 }
 
-const IT =new Department("it")
+const IT =new Department("d1","it")
 // IT.employees[2] = "ana" //@cant be access because its private

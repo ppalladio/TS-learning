@@ -1,8 +1,9 @@
 "use strict";
 class Department {
-    constructor(n) {
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
         this.employees = [];
-        this.name = n;
     }
     describe() {
         console.log('Department' + this.name);
@@ -14,5 +15,5 @@ class Department {
         console.log(this.employees);
     }
 }
-const IT = new Department("it");
+const IT = new Department("d1", "it");
 // IT.employees[2] = "ana" //@cant be access because its private
