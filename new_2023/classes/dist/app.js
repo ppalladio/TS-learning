@@ -34,6 +34,10 @@ class Accounting extends Department {
         this.reports = reports;
         this.lastReport = reports[0];
     }
+    // static
+    static createEmployee(id, name) {
+        return (`new employee with id ${id} and name ${name}`);
+    }
     addEmployee(employee) {
         super.addEmployee(employee); //The code super.addEmployee(employee) in TypeScript is calling the addEmployee method of the parent class of the current class. 
     }
@@ -50,3 +54,6 @@ console.log(accounting.mostRecentReport);
 //setter
 accounting.mostRecentReport = 'report2';
 console.log(accounting.mostRecentReport);
+// static
+const newEmployee = Accounting.createEmployee('d3', 'max');
+console.log(newEmployee);

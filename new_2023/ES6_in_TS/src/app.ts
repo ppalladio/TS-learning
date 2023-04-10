@@ -10,15 +10,18 @@ const person = {
     age: 3,
 };
 
+//@spread operator
 const infoPerson = { ...person, hobbies: 'acting' };
 activeHobbies.push(...hobbies);
 console.log(...hobbies);
 console.log(activeHobbies);
 console.log(infoPerson);
 
+//@rest operator
 const add = (...num: number[]): number => {
     return num.reduce((cur, val) => {
         return cur + val;
     }, 0);
 };
+
 console.log(add(1, 2, 3));
