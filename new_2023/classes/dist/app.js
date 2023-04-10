@@ -74,3 +74,24 @@ const newSingleton = Singleton.getInstance();
 const newSingleton2 = Singleton.getInstance();
 console.log(newSingleton, newSingleton2);
 newSingleton.doSomething();
+/****************************
+ * ***/ /@ interface                         */;
+class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    greet(phrase) {
+        console.log(phrase);
+    }
+}
+let user1;
+user1 = new Person('user1');
+user1 = {
+    name: 'user1',
+    age: 20,
+    greet(phrase) {
+        console.log(phrase);
+    },
+};
+console.log(user1);

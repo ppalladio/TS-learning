@@ -70,8 +70,8 @@ console.log(newEmployee);
 class Singleton {
     private static instance: Singleton;
     private constructor(public id: string) {
-		console.log(`output from ${this.id}`);
-	}
+        console.log(`output from ${this.id}`);
+    }
 
     public static getInstance(): Singleton {
         if (!Singleton.instance) {
@@ -90,3 +90,34 @@ const newSingleton2 = Singleton.getInstance();
 
 console.log(newSingleton, newSingleton2);
 newSingleton.doSomething();
+
+/****************************
+ * ***/ /@ interface                         */;
+
+interface Greetable {
+    name: string;
+
+    greet(phrase: string): void;
+}
+
+class Person implements Greetable {
+    constructor(public name: string, public age?: number) {}
+    greet(phrase: string): void {
+        console.log(phrase);
+    }
+}
+
+let user1: Person;
+
+user1 = new Person('user1');
+
+user1 = {
+    name: 'user1',
+    age: 20,
+
+    greet(phrase: string): void {
+        console.log(phrase);
+    },
+};
+
+console.log(user1);
