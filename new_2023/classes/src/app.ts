@@ -109,7 +109,7 @@ class Person implements Greetable {
 
 let user1: Person;
 
-user1 = new Person('user1');
+user1 = new Person('user1'); // let user1 = new Person('user1'); also viable
 
 user1 = {
     name: 'user1',

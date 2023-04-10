@@ -86,7 +86,7 @@ class Person {
     }
 }
 let user1;
-user1 = new Person('user1');
+user1 = new Person('user1'); // let user1 = new Person('user1'); also viable
 user1 = {
     name: 'user1',
     age: 20,
