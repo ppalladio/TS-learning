@@ -15,7 +15,38 @@ class Department {
         console.log(this.employees);
     }
 }
-const IT = new Department("d1", "it");
+const IT = new Department('d1', 'it');
 IT.describe();
 // IT.employees[2] = "ana" //@cant be access because its private
 //IT.name ="accounting" Cannot assign to 'name' because it is a read-only property
+class Accounting extends Department {
+    get mostRecentReport() {
+        if (this.lastReport) {
+            return this.lastReport;
+        }
+        return 'no report yet';
+    }
+    set mostRecentReport(report) {
+        this.addReport(report);
+    }
+    constructor(id, reports) {
+        super(id, 'accounting');
+        this.reports = reports;
+        this.lastReport = reports[0];
+    }
+    addEmployee(employee) {
+        super.addEmployee(employee); //The code super.addEmployee(employee) in TypeScript is calling the addEmployee method of the parent class of the current class. 
+    }
+    addReport(text) {
+        this.reports.push(text);
+        this.lastReport = text;
+    }
+}
+const accounting = new Accounting('d2', []);
+//getter
+console.log(accounting.mostRecentReport);
+accounting.addReport('report1');
+console.log(accounting.mostRecentReport);
+//setter
+accounting.mostRecentReport = 'report2';
+console.log(accounting.mostRecentReport);
