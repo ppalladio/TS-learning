@@ -5,9 +5,6 @@ class Department {
         this.name = name;
         this.employees = [];
     }
-    describe() {
-        console.log(this.id + ' Department ' + this.name);
-    }
     addEmployee(employee) {
         this.employees.push(employee);
     }
@@ -15,8 +12,6 @@ class Department {
         console.log(this.employees);
     }
 }
-const IT = new Department('d1', 'it');
-IT.describe();
 // IT.employees[2] = "ana" //@cant be access because its private
 //IT.name ="accounting" Cannot assign to 'name' because it is a read-only property
 class Accounting extends Department {
@@ -34,12 +29,15 @@ class Accounting extends Department {
         this.reports = reports;
         this.lastReport = reports[0];
     }
+    describe() {
+        console.log(Accounting);
+    }
     // static
     static createEmployee(id, name) {
-        return (`new employee with id ${id} and name ${name}`);
+        return `new employee with id ${id} and name ${name}`;
     }
     addEmployee(employee) {
-        super.addEmployee(employee); //The code super.addEmployee(employee) in TypeScript is calling the addEmployee method of the parent class of the current class. 
+        super.addEmployee(employee); //The code super.addEmployee(employee) in TypeScript is calling the addEmployee method of the parent class of the current class.
     }
     addReport(text) {
         this.reports.push(text);
@@ -57,3 +55,22 @@ console.log(accounting.mostRecentReport);
 // static
 const newEmployee = Accounting.createEmployee('d3', 'max');
 console.log(newEmployee);
+class Singleton {
+    constructor(id) {
+        this.id = id;
+        console.log(`output from ${this.id}`);
+    }
+    static getInstance() {
+        if (!Singleton.instance) {
+            Singleton.instance = new Singleton('a');
+        }
+        return Singleton.instance;
+    }
+    doSomething() {
+        console.log('Doing something...');
+    }
+}
+const newSingleton = Singleton.getInstance();
+const newSingleton2 = Singleton.getInstance();
+console.log(newSingleton, newSingleton2);
+newSingleton.doSomething();
