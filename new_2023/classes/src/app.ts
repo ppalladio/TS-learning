@@ -93,15 +93,20 @@ newSingleton.doSomething();
 
 /****************************
  * ***/ /@ interface                         */;
-
-interface Greetable {
+interface Named {
     name: string;
+}
+interface Age {
+    age: number;
+}
+interface Greetable extends Named, Age {
+    //
 
     greet(phrase: string): void;
 }
 
 class Person implements Greetable {
-    constructor(public name: string, public age?: number) {}
+    constructor(public name: string, public age: number) {}
     greet(phrase: string): void {
         console.log(phrase);
     }
@@ -109,7 +114,7 @@ class Person implements Greetable {
 
 let user1: Person;
 
-user1 = new Person('user1'); // let user1 = new Person('user1'); also viable
+user1 = new Person('user1', 20); // let user1 = new Person('user1'); also viable
 
 user1 = {
     name: 'user1',
@@ -120,4 +125,10 @@ user1 = {
     },
 };
 
+//@use interface to define function
+
+interface fn {
+    addFn(a: number, b: number): void;
+}
+type addFnn = (a: number, b: number) => void; //user type to define function
 console.log(user1);
