@@ -131,4 +131,13 @@ interface fn {
     addFn(a: number, b: number): void;
 }
 type addFnn = (a: number, b: number) => void; //user type to define function
+
+//: optional parameter and method
+interface Optional{
+	name: string;
+	age?: number;
+
+	printInterface?():void;
+}
+
 console.log(user1);
