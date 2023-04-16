@@ -36,35 +36,63 @@ type UnknownEmployee = Employee | Admin;
 const printEmployeeInfo = (emp: UnknownEmployee) => {
     console.log('name: ' + emp.name);
     //@type guard with xxx in
-	if ('privileges' in emp) {
+    if ('privileges' in emp) {
         console.log('privileges: ' + emp.privileges);
     }
 };
 
-class Car{
-	drive(){
-		console.log('driving...');
-	}
+class Car {
+    drive() {
+        console.log('driving...');
+    }
 }
 
-class Truck{
-	drive(){
+class Truck {
+    drive() {
         console.log('driving a truck...');
     }
 
-	loadCargo(amount:number)
-	{
-		console.log('loading cargo...' + amount);
-	}
+    loadCargo(amount: number) {
+        console.log('loading cargo...' + amount);
+    }
 }
 
 type Vehicle = Car | Truck;
-const v1= new Car();
+const v1 = new Car();
 const v2 = new Truck();
 
-const useVehicle=(vehicle:Vehicle)=>{
-	vehicle.drive();
-	if (vehicle instanceof Truck){ //>wont world if the truck is created wtih interface
-		vehicle.loadCargo(5);
-	}
+const useVehicle = (vehicle: Vehicle) => {
+    vehicle.drive();
+    if (vehicle instanceof Truck) {
+        //>wont world if the truck is created wtih interface
+        vehicle.loadCargo(5);
+    }
+};
+
+//discriminated UNion
+
+interface Bird {
+    type: 'bird';
+    flyingSpeed: number;
 }
+
+interface Horse {
+    type: 'horse'; //@literal type
+    groundSpeed: number;
+}
+
+type Animal = Bird | Horse;
+
+const movingAnimal = (animal: Animal) => {
+    let speed;
+    switch (animal.type) {
+        case 'bird':
+            speed = animal.flyingSpeed;
+            break;
+        case 'horse':
+            speed = animal.groundSpeed;
+    }
+    console.log('moving at speed ' + speed);
+};
+
+movingAnimal({type: 'bird', flyingSpeed: 3});
