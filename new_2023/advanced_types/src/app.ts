@@ -95,13 +95,21 @@ const movingAnimal = (animal: Animal) => {
     console.log('moving at speed ' + speed);
 };
 
-movingAnimal({type: 'bird', flyingSpeed: 3});
+movingAnimal({ type: 'bird', flyingSpeed: 3 });
 
 //@ type casting
 
-const h1= <HTMLHeadingElement>document.querySelector('h1')//h1: HTMLHeadingElement | null //:V1
+const h1 = <HTMLHeadingElement>document.querySelector('h1'); //h1: HTMLHeadingElement | null //:V1
 
-const msg = document.getElementById('msg-output') as HTMLElement;//msg: HTMLElement | null //:v2
+const msg = document.getElementById('msg-output') as HTMLElement; //msg: HTMLElement | null //:v2
 
+//@index properties
 
+interface ErrorContainer {
+    [key: string]: string;
+}
 
+const Err: ErrorContainer = {
+    email: 'must be a valid email',
+    username: 'must start with a letter',
+};
