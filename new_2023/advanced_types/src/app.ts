@@ -96,3 +96,12 @@ const movingAnimal = (animal: Animal) => {
 };
 
 movingAnimal({type: 'bird', flyingSpeed: 3});
+
+//@ type casting
+
+const h1= <HTMLHeadingElement>document.querySelector('h1')//h1: HTMLHeadingElement | null //:V1
+
+const msg = document.getElementById('msg-output') as HTMLElement;//msg: HTMLElement | null //:v2
+
+
+
