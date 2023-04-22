@@ -113,3 +113,17 @@ const Err: ErrorContainer = {
     email: 'must be a valid email',
     username: 'must start with a letter',
 };
+
+//@function overload
+function addOverload(a: number, b: number): number;
+function addOverload(a: string, b: string): string;
+
+function addOverload(a: Combinable, b: Combinable) {
+    if (typeof a === 'string' || typeof b === 'string') {
+        return a.toString() + b.toString();
+    }
+    return a + b;
+}
+
+const result = addOverload('a', 'b');
+
