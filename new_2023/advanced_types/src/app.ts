@@ -127,3 +127,13 @@ function addOverload(a: Combinable, b: Combinable) {
 
 const result = addOverload('a', 'b');
 
+//@optional chaining
+
+const fetchUserData ={
+	id:'u1',
+	name:'Rick',
+    email:'envkt@example.com',
+    job:{title:'Developer',description:'some developer'},
+}
+
+console.log(fetchUserData?.job?.title);
