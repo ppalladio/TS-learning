@@ -137,3 +137,16 @@ const fetchUserData ={
 }
 
 console.log(fetchUserData?.job?.title);
+
+//@nullish coalescing
+//'nullish coalescing operator only checks for nullish values.
+const userInput = '';
+
+const storedData = userInput || 'Default value';
+console.log(storedData);//>return default value
+
+const userInput2 = '';
+
+const storedData2 = userInput2 ?? 'Default value';
+
+console.log(storedData2);//>return ''
